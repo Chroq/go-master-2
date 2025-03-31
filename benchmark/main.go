@@ -1,13 +1,17 @@
 package main
 
 import (
-	"net/http"
+	"fmt"
 	_ "net/http/pprof"
-	"sync"
 
 	"github.com/Chroq/benchmark/fibonacci"
 )
 
+func main() {
+	fmt.Println(fibonacci.FibonacciLoop(40))
+}
+
+/*
 func main() {
 	// profiles := profile.Start(profile.MemProfile)
 	// defer profiles.Stop()
@@ -72,3 +76,4 @@ func main() {
 	// fmt.Println("Memoization size : ", memo.Size(), " bytes")
 	wg.Wait()
 }
+*/

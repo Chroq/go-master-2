@@ -6,38 +6,25 @@ import (
 	"github.com/Chroq/benchmark/fibonacci"
 )
 
-var result int
-
 func BenchmarkFibonnacciReccursive10(b *testing.B) {
-	var r int
 	for i := 0; i < b.N; i++ {
-		r = fibonacci.FibonacciRecursive(10)
-		r = fibonacci.FibonacciRecursive(10)
-		r = fibonacci.FibonacciRecursive(10)
+		fibonacci.FibonacciRecursive(10)
 	}
-	result = r
 }
 
 func BenchmarkFibonacciLoop10(b *testing.B) {
-	var r int
 	for i := 0; i < b.N; i++ {
-		r = fibonacci.FibonacciDynamic(10)
-		r = fibonacci.FibonacciDynamic(10)
-		r = fibonacci.FibonacciDynamic(10)
+		fibonacci.FibonacciLoop(10)
 	}
-	result = r
 }
 
 func BenchmarkFibonacciDynamic10(b *testing.B) {
-	var r int
 	for i := 0; i < b.N; i++ {
-		r = fibonacci.FibonacciDynamic(10)
-		r = fibonacci.FibonacciDynamic(10)
-		r = fibonacci.FibonacciDynamic(10)
+		fibonacci.FibonacciDynamic(10)
 	}
-	result = r
 }
 
+/*
 func BenchmarkFibonacciMemoization10(b *testing.B) {
 	var r int
 	for i := 0; i < b.N; i++ {
@@ -48,3 +35,4 @@ func BenchmarkFibonacciMemoization10(b *testing.B) {
 	}
 	result = r
 }
+*/

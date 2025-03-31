@@ -32,7 +32,7 @@ func leakMemory() {
 
 func main() {
 	go func() {
-		http.ListenAndServe("localhost:8080", nil)
+		http.ListenAndServe("localhost:6060", nil)
 	}()
 
 	// leakMemory()
