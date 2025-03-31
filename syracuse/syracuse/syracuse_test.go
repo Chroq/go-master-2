@@ -33,3 +33,9 @@ func TestSyracuse(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkSyracuse(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		syracuse.Syracuse(3)
+	}
+}
