@@ -2,18 +2,25 @@ package main
 
 import "fmt"
 
-func escapeAnalysis(notEscaped *int) *int {
-	escaped := 1
+func escapeAnalysis(escapeMain *int) *int {
+	escaped := 3
+	escapeMain = &escaped
 
-	notEscaped = &escaped
-
-	return notEscaped
+	return escapeMain
 }
 
+func NoEscape(notEscaped int) int {
+	return notEscaped
+
+}
+
+// go build -gcflags="-m" -o escape_analysis main.go
 func main() {
-	notEscaped := 1
+	escapeMain := 1
+	notEscaped := 2
 
-	escapeAnalysis(&notEscaped)
+	escapeAnalysis(&escapeMain)
 
-	fmt.Println(notEscaped)
+	NoEscape(notEscaped)
+	fmt.Println(escapeMain)
 }
