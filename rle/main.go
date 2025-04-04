@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	original := generateBytesSlice(16)
+	original := generateBytesSlice(1024)
 
 	workers := runtime.NumCPU()
 
@@ -45,7 +45,8 @@ func main() {
 	fmt.Println("Original : ", string(original))
 	fmt.Println("Compressed : ", string(compressedBytes))
 	fmt.Println("Equal : ", bytes.Equal(original, decompressed))
-	fmt.Printf("Compression rate : %.2f", float32(len(original)/len(compressedBytes))*100)
+	// Calculate the compression ration as a percentage for the original and compressed data
+	fmt.Printf("Compression ratio : %.2f %% \n", float64(len(original))/float64(len(compressedBytes))*100-100)
 }
 
 func Decompress(compressed []byte) []byte {

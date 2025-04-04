@@ -47,7 +47,7 @@ func BenchmarkCompress(b *testing.B) {
 	}
 }
 
-func BenchmarkCompressRLE(b *testing.B) {
+func BenchmarkCompressOptimized(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		CompressOptimized([]byte("aaabbbbbbabbabaaabbbbbbabbabaaaaaabbbbbbabbabaaa"))
 	}

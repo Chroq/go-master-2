@@ -9,16 +9,21 @@ import (
 // fieldalignment -fix ./...
 
 type Foo struct {
+	bar Bar
+	s   string
+	b   int64
+	a   bool
+	c   bool
+	d   bool
+}
+
+type Bar struct {
+	s string
 	a bool
-	b int64
-	c bool
-	d bool
 }
 
 func main() {
-	x := &Foo{}
 	y := Foo{}
 
-	fmt.Println(unsafe.Sizeof(x))
 	fmt.Println(unsafe.Sizeof(y))
 }

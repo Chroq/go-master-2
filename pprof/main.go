@@ -22,10 +22,36 @@ func lessConsumingCPU() {
 }
 
 // go tool pprof http://localhost:6060/debug/pprof/heap
+// go tool pprof http://localhost:6060/debug/pprof/allocs
 func leakMemory() {
 	var leak []string
 	for {
 		leak = append(leak, "leak memory")
+		time.Sleep(1 * time.Millisecond)
+	}
+}
+
+func noMemoryLeak() {
+	var memory string
+	for {
+		time.Sleep(1 * time.Second)
+		memory = "no leak"
+		_ = memory
+	}
+}
+
+func veryBigMemoryLeak() {
+	var leak [][]byte
+	for {
+		leak = append(leak, make([]byte, 10))
+		time.Sleep(1 * time.Millisecond)
+	}
+}
+
+func hugeMemoryLeak() {
+	var leak [][]byte
+	for {
+		leak = append(leak, make([]byte, 1000))
 		time.Sleep(1 * time.Millisecond)
 	}
 }
@@ -35,9 +61,10 @@ func main() {
 		http.ListenAndServe("localhost:6060", nil)
 	}()
 
-	// leakMemory()
-	go lessConsumingCPU()
-	go consumeCPU()
+	go leakMemory()
+	go veryBigMemoryLeak()
+	go noMemoryLeak()
+	go hugeMemoryLeak()
 
 	time.Sleep(60 * time.Minute)
 }
